@@ -57,9 +57,13 @@ function setupEventListeners() {
   // Difficulty Toggle
   elements.difficultyBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      if (state.isActive) return; // Prevent changing during test
-      elements.difficultyBtns.forEach(b => b.classList.remove('active'));
+      if (state.isActive) return;
+      elements.difficultyBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       e.target.classList.add('active');
+      e.target.setAttribute('aria-pressed', 'true');
       state.difficulty = e.target.dataset.difficulty;
       setRandomPassage();
     });
@@ -69,8 +73,12 @@ function setupEventListeners() {
   elements.modeBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       if (state.isActive) return;
-      elements.modeBtns.forEach(b => b.classList.remove('active'));
+      elements.modeBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       e.target.classList.add('active');
+      e.target.setAttribute('aria-pressed', 'true');
       state.mode = e.target.dataset.mode;
       resetTest();
     });
@@ -82,6 +90,14 @@ function setupEventListeners() {
   // Click on passage to start
   elements.passageDisplay.addEventListener('click', () => {
     if (!state.isActive) startTest();
+  });
+
+  // Keyboard accessibility for passage start
+  elements.passageDisplay.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && !state.isActive) {
+      e.preventDefault(); // Prevent scrolling with space
+      startTest();
+    }
   });
 
   // Restart Button

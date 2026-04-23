@@ -18,6 +18,7 @@
 
   <main class="app-container">
     <header class="app-header">
+      <h1 class="sr-only">Typing Speed Test</h1>
       <img src="./assets/images/logo-large.svg" alt="Typing Speed Test Logo" class="logo">
       <div class="personal-best-badge">
         <img src="./assets/images/icon-personal-best.svg" alt="" aria-hidden="true">
@@ -44,23 +45,23 @@
       <div class="control-group">
         <span class="control-label">Difficulty</span>
         <div class="toggle-group" id="difficulty-toggle">
-          <button class="toggle-btn active" data-difficulty="easy">Easy</button>
-          <button class="toggle-btn" data-difficulty="medium">Medium</button>
-          <button class="toggle-btn" data-difficulty="hard">Hard</button>
+          <button class="toggle-btn active" data-difficulty="easy" aria-pressed="true">Easy</button>
+          <button class="toggle-btn" data-difficulty="medium" aria-pressed="false">Medium</button>
+          <button class="toggle-btn" data-difficulty="hard" aria-pressed="false">Hard</button>
         </div>
       </div>
 
       <div class="control-group">
         <span class="control-label">Mode</span>
         <div class="toggle-group" id="mode-toggle">
-          <button class="toggle-btn active" data-mode="timed">Timed (60s)</button>
-          <button class="toggle-btn" data-mode="passage">Passage</button>
+          <button class="toggle-btn active" data-mode="timed" aria-pressed="true">Timed (60s)</button>
+          <button class="toggle-btn" data-mode="passage" aria-pressed="false">Passage</button>
         </div>
       </div>
     </section>
 
     <section class="typing-area-container">
-      <div class="passage-display" id="passage-display">
+      <div class="passage-display" id="passage-display" tabindex="0" aria-label="Typing passage">
         <!-- Passage characters will be injected here -->
       </div>
 
@@ -71,7 +72,7 @@
     </section>
   </main>
 
-  <div class="modal-overlay hidden" id="results-modal">
+  <div class="modal-overlay hidden" id="results-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-content">
       <div class="modal-header">
         <img src="./assets/images/icon-completed.svg" alt="" class="modal-icon" id="modal-icon">
