@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Typing Speed Test</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="app-container">
+    <header class="app-header">
+      <img src="./assets/images/logo-large.svg" alt="Typing Speed Test Logo" class="logo">
+      <div class="personal-best-badge">
+        <img src="./assets/images/icon-personal-best.svg" alt="" aria-hidden="true">
+        <span>Personal best: <strong id="pb-wpm">0</strong> WPM</span>
+      </div>
+    </header>
+
+    <section class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-label">WPM</span>
+        <strong class="stat-value" id="current-wpm">0</strong>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Accuracy</span>
+        <strong class="stat-value" id="current-accuracy">100%</strong>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Time</span>
+        <strong class="stat-value" id="current-time">60s</strong>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="control-group">
+        <span class="control-label">Difficulty</span>
+        <div class="toggle-group" id="difficulty-toggle">
+          <button class="toggle-btn active" data-difficulty="easy">Easy</button>
+          <button class="toggle-btn" data-difficulty="medium">Medium</button>
+          <button class="toggle-btn" data-difficulty="hard">Hard</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Mode</span>
+        <div class="toggle-group" id="mode-toggle">
+          <button class="toggle-btn active" data-mode="timed">Timed (60s)</button>
+          <button class="toggle-btn" data-mode="passage">Passage</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="typing-area-container">
+      <div class="passage-display" id="passage-display">
+        <!-- Passage characters will be injected here -->
+      </div>
+
+      <div class="start-overlay" id="start-overlay">
+        <button class="btn-primary" id="btn-start">Start Typing Test</button>
+        <p class="start-hint">Or click the text and start typing</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay hidden" id="results-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="./assets/images/icon-completed.svg" alt="" class="modal-icon" id="modal-icon">
+        <h2 class="modal-title" id="modal-title">Test Complete!</h2>
+        <p class="modal-subtitle" id="modal-subtitle">Solid run. Keep pushing to beat your high score.</p>
+      </div>
+
+      <div class="modal-stats">
+        <div class="modal-stat-item">
+          <span class="modal-stat-label">WPM</span>
+          <strong class="modal-stat-value" id="final-wpm">0</strong>
+        </div>
+        <div class="modal-stat-item">
+          <span class="modal-stat-label">Accuracy</span>
+          <strong class="modal-stat-value" id="final-accuracy">0%</strong>
+        </div>
+        <div class="modal-stat-item">
+          <span class="modal-stat-label">Characters</span>
+          <strong class="modal-stat-value" id="final-characters">0 / 0</strong>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="btn-restart">
+        <img src="./assets/images/icon-restart.svg" alt="" aria-hidden="true">
+        Go Again
+      </button>
+    </div>
+  </div>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#https://gitlab.com/EmiJJN"> Emiliano Jauregui</a>.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
